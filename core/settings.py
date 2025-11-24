@@ -26,7 +26,7 @@ CHAVE_KEMU = '202040'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["Paju.railway.app"]
+ALLOWED_HOSTS = ["*","Paju.railway.app"]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
