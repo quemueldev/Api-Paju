@@ -13,7 +13,7 @@ rotas_put = Router()
 
 
 @rotas_put.patch('put_materia/{id}')
-def put_materia(request, dados: Put_materia):
+def put_materia(request,id, dados: Put_materia):
     token_user = usuario_do_token(request.headers.get('Authorization'))
     try:
         busca = Materia.objects.get(id = dados.id,usuario = token_user)
@@ -24,7 +24,7 @@ def put_materia(request, dados: Put_materia):
     busca.save()
     return {'resposta': "materia atualizada"}
 @rotas_put.patch('put_assunto/{id}')
-def put_assunto(request, dados: Put_assunto):
+def put_assunto(request,id, dados: Put_assunto):
     token_user = usuario_do_token(request.headers.get('Authorization'))
     try:
         busca = Assunto.objects.get(id = dados.id,materia__usuario = token_user)
@@ -35,7 +35,7 @@ def put_assunto(request, dados: Put_assunto):
     busca.save()
     return {'resposta': "assunto atualizado"}
 @rotas_put.patch('put_resumo/{id}')
-def put_resumo(request,dados: Put_resumo):
+def put_resumo(request,id,dados: Put_resumo):
     token_user = usuario_do_token(request.headers.get('Authorization'))
     try:
         busca = Resumo.objects.get(id = dados.id,assunto__materia__usuario = token_user)
